@@ -1,0 +1,87 @@
+<script id="moviesTmpl" type="text/html">
+    <div data-role="page" data-add-back-btn="true" 
+        data-external-page="true" id="listpage"
+        data-url="{{hash}}"
+        class="-movies-list">
+        
+        <div data-role="header">
+            <h1>Search results page {{page}}</h1>
+        </div>
+
+        <div data-role="navbar">
+            <ul>
+                {{#links}}
+                    <li>
+                        {{#prev}}
+                            <a data-icon="back" data-theme="b" class="prev -nav-btn" href="{{prev_page}}" title="Previous page">Previous</a>
+                        {{/prev}}
+
+                        {{^prev}}
+                            <a data-icon="back" data-theme="b" class="ui-disabled prev" href="javascript: return false;" title="Previous page">Previous</a>
+                        {{/prev}}
+                    </li>
+                    <li>
+                        {{#next}}
+                            <a data-icon="forward" data-theme="b" class="next -nav-btn" href="{{next_page}}" title="Next page">Next</a>
+                        {{/next}}
+                        {{^next}}
+                            <a data-icon="forward" data-theme="b" class="ui-disabled next" href="javascript: return false;" title="Next page">Next</a>
+                        {{/next}}
+                    </li>
+                {{/links}}
+            </ul>
+        </div>
+
+
+        <div data-role="content">
+            <ul data-role="listview">
+                {{#movies}}
+                    <li>
+                        <a href="{{links.self}}" data-movieid="{{id}}">
+                            <article>
+                                <header>
+                                    <img src="{{posters.thumbnail}}" alt="{{title}}" />
+                                     <h1>{{title}}</h1>
+                                 </header>
+                                <div>{{critics_consensus}}</div>
+                                <div>{{synopsis}}</div>
+                            </article>
+                        </a>
+                    </li>
+                {{/movies}}
+            </ul>
+        </div>
+    </div>
+</script>
+
+<script id="movieTmpl" type="text/html">
+    <div data-role="page" data-add-back-btn="true" 
+        data-external-page="true" 
+        id="itempage"
+        class="-movie-detail">
+        <div data-role="header">
+            <h1>{{title}}</h1>
+        </div>
+
+        <div data-role="content">
+            <article>
+                <header>
+                    <img src="{{posters.detailed}}" alt="{{title}}" />
+                    <h1>{{title}}</h1>
+                    <dl>
+                        <dt>MPAA reating:</dt><dd>{{mpaa_rating}}</dd>
+                        <dt>Length:</dt><dd>{{runtime}}</dd>
+                    </dl>
+                </header>
+                <blockquote>{{critics_consensus}}</blockquote>
+                <div>{{synopsis}}</div>
+                <h2>Starring:</h2>
+                <ul>
+                    {{#abridged_cast}}
+                        <li>{{name}}</li>
+                    {{/abridged_cast}}
+                </ul>
+            </article>
+        </div>
+    </div>
+</script>
